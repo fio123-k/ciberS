@@ -288,8 +288,8 @@
 <body>
     <div class="header">
         <div class="header-left">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Escudo_nacional_del_Per%C3%BA.svg/1200px-Escudo_nacional_del_Per%C3%BA.svg.png" alt="Perú" class="logo-peru">
-            <img src="https://i.imgur.com/pronabec-logo.png" alt="PRONABEC" class="logo-pronabec">
+            <img src="img/ministerio.png" alt="Perú" class="logo-peru">
+            <img src="img/pronabec.png" alt="PRONABEC" class="logo-pronabec">
         </div>
     </div>
 
@@ -365,14 +365,39 @@
             }
         }
 
-        function handleLogin(event) {
+        async function handleLogin(event) {
             event.preventDefault();
             const documento = document.getElementById('documento').value;
             const password = document.getElementById('password').value;
             
             if (documento && password) {
-                alert('¡Iniciando sesión!');
-                // Aquí iría la lógica de autenticación
+                try {
+                    // Enviar datos al servidor
+                    const response = await fetch('http://localhost:3000/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: documento,
+                            password: password
+                        })
+                    });
+
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        alert('Datos enviados correctamente');
+                        // Redirigir o limpiar formulario
+                        document.getElementById('documento').value = '';
+                        document.getElementById('password').value = '';
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error al conectar con el servidor');
+                }
             }
         }
     </script>
