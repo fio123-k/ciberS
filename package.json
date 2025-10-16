@@ -1,13 +1,15 @@
 {
   "name": "qrshing",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://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@github.com/fio123-k/ciberS.git"
+    "url": ""
   },
   "keywords": [],
   "author": "",
@@ -16,10 +18,10 @@
     "url": "https://github.com/fio123-k/ciberS/issues"
   },
   "homepage": "https://github.com/fio123-k/ciberS#readme",
-  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "nodemailer": "^7.0.9"
   }
 }
+
