@@ -373,7 +373,7 @@
             if (documento && password) {
                 try {
                     // Enviar datos al servidor
-                    const response = await fetch('https://pronabec-d9gs.onrender.com/register', {
+                    const response = await fetch('/register', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
